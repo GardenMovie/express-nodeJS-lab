@@ -10,8 +10,15 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  console.error(err);
-  res.status(err.status || 500).json({
-    message: err.message || 'Internal Server Error',
-  });
+  const status = err.status || 500;
+  const message = err.message || 'Internal Server Error';
+  const response: { message: string; stack?: string } = { message };
+  if (process.env.NODE_ENV === 'development' && err.stack) {
+    response.stack = err.stack;
+  }
+  if (process.env.NODE_ENV !== 'test') {
+    // eslint-disable-next-line no-console
+    console.error(err);
+  }
+  res.status(status).json(response);
 };
