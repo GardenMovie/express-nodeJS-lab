@@ -1,7 +1,7 @@
 # Backend Project Analysis - Junior Developer Assessment
 
 **Date:** January 17, 2026  
-**Overall Rating:** 8/10 (Strong Junior Backend Foundation)
+**Overall Rating:** 8.5/10 (Strong Junior Backend Foundation, CRUD fully working and tested)
 
 ---
 
@@ -22,6 +22,7 @@
 - All input validation handled at the route level with express-validator
 - Custom middleware for request validation and resource existence (itemExists)
 - Controllers are clean and focused only on business logic
+- All CRUD endpoints tested and working via Postman
 
 ### 4. Error Handling
 - Centralized error handler middleware
@@ -39,6 +40,7 @@
 
 ## ⚠️ Remaining Issues & Next Steps
 
+
 ### 1. No Database Yet
 - Still using in-memory array storage (data lost on restart)
 - For production, integrate a real database (SQLite, PostgreSQL, MongoDB, etc.)
@@ -46,6 +48,7 @@
 ### 2. Security & Production Readiness
 - No rate limiting, CORS, or helmet for HTTP security
 - No request body size limits
+
 
 ### 3. Missing Features
 - No logging system (Winston, Morgan)
@@ -84,9 +87,10 @@
 - [ ] Add security middleware (helmet, cors, express-rate-limit)
 - [ ] Add logging (Winston, Morgan)
 - [ ] Add API documentation (Swagger/OpenAPI)
-- [ ] Add automated testing (Jest, Supertest)
+- [ ] Add automated testing (Jest, Supertest) — start with basic CRUD tests
 - [ ] Use UUIDs for IDs or DB-generated IDs
-- [ ] Add Docker and CI/CD for production
+- [ ] Dockerize the application for easy deployment
+- [ ] Add CI/CD for production
 
 ---
 
