@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import { items, Item } from '../models/item';
+import { items, Item, getNextItemId } from '../models/item';
 
 // Create an item
 export const createItem = (req: Request, res: Response, next: NextFunction) => {
     try {
         const { name } = req.body;
-        const newItem: Item = { id: Date.now(), name: name.trim() };
+        const newItem: Item = { id: getNextItemId(), name: name.trim() };
         items.push(newItem);
         res.status(201).json(newItem);
     } catch (error) {

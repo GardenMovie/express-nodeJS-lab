@@ -4,3 +4,7 @@ export interface Item {
 }
 
 export let items: Item[] = [];
+let nextId = 1;
+export function getNextItemId() {
+    return nextId++;
+}
