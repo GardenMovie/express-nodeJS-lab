@@ -1,7 +1,7 @@
 # Backend Project Analysis - Junior Developer Assessment
 
 **Date:** January 17, 2026  
-**Overall Rating:** 8.5/10 (Strong Junior Backend Foundation, CRUD fully working and tested)
+**Overall Rating:** 9/10 (Strong Junior Backend Foundation, CRUD and automated tests fully working)
 
 ---
 
@@ -22,7 +22,7 @@
 - All input validation handled at the route level with express-validator
 - Custom middleware for request validation and resource existence (itemExists)
 - Controllers are clean and focused only on business logic
-- All CRUD endpoints tested and working via Postman
+- All CRUD endpoints tested and working via Postman and automated Jest/Supertest tests
 
 ### 4. Error Handling
 - Centralized error handler middleware
@@ -34,6 +34,7 @@
 - Environment variable management with dotenv
 - Health check endpoint implemented
 - README and .env.example provided
+- Automated test suite with Jest and Supertest
 
 ---
 
@@ -53,7 +54,6 @@
 ### 3. Missing Features
 - No logging system (Winston, Morgan)
 - No API documentation (Swagger/OpenAPI)
-- No automated testing (Jest, Mocha)
 
 ### 4. Type Safety & IDs
 - Still using Date.now() for IDs (consider UUIDs or DB-generated IDs)
@@ -87,7 +87,7 @@
 - [ ] Add security middleware (helmet, cors, express-rate-limit)
 - [ ] Add logging (Winston, Morgan)
 - [ ] Add API documentation (Swagger/OpenAPI)
-- [ ] Add automated testing (Jest, Supertest) — start with basic CRUD tests
+- [ ] Expand automated testing (edge cases, error handling, integration/unit split)
 - [ ] Use UUIDs for IDs or DB-generated IDs
 - [ ] Dockerize the application for easy deployment
 - [ ] Add CI/CD for production
@@ -109,8 +109,9 @@
 
 ### Areas for Growth
 - Add database integration
-- Add security, logging, and testing
+- Add security and logging
 - Prepare for production (Docker, CI/CD)
+- Expand and maintain automated test coverage
 
 ### Interview Questions to Ask
 1. How would you add a database to this project?
