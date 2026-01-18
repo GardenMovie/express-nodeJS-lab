@@ -1,9 +1,9 @@
 import request from 'supertest';
 import app from '../src/app';
-import { items } from '../src/models/item';
+import { clearItems, createItem } from '../src/models/item';
 
 describe('GET /api/items', () => {
-  beforeEach(() => { items.length = 0; });
+  beforeEach(() => { clearItems(); });
 
   it('returns empty array when no items exist', async () => {
     const res = await request(app).get('/api/items');
@@ -12,7 +12,8 @@ describe('GET /api/items', () => {
   });
 
   it('returns all items after creation', async () => {
-    items.push({ id: 1, name: 'A' }, { id: 2, name: 'B' });
+    createItem('A');
+    createItem('B');
     const res = await request(app).get('/api/items');
     expect(res.status).toBe(200);
     expect(res.body.length).toBe(2);
@@ -20,11 +21,11 @@ describe('GET /api/items', () => {
 });
 
 describe('GET /api/items/:id', () => {
-  beforeEach(() => { items.length = 0; });
+  beforeEach(() => { clearItems(); });
 
   it('returns the correct item if it exists', async () => {
-    items.push({ id: 1, name: 'A' });
-    const res = await request(app).get('/api/items/1');
+    const item = createItem('A');
+    const res = await request(app).get(`/api/items/${item.id}`);
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('A');
   });

@@ -1,14 +1,13 @@
 import request from 'supertest';
 import app from '../src/app';
-import { items } from '../src/models/item';
+import { clearItems, createItem } from '../src/models/item';
 
-describe('PUT /api/items/:id', () => {
-  beforeEach(() => { items.length = 0; });
+  beforeEach(() => { clearItems(); });
 
   it('updates item with valid data', async () => {
-    items.push({ id: 1, name: 'Old' });
+    const item = createItem('Old');
     const res = await request(app)
-      .put('/api/items/1')
+      .put(`/api/items/${item.id}`)
       .send({ name: 'New' });
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('New');
@@ -22,9 +21,9 @@ describe('PUT /api/items/:id', () => {
   });
 
   it('fails with 400 if name is missing', async () => {
-    items.push({ id: 1, name: 'Old' });
+    const item = createItem('Old');
     const res = await request(app)
-      .put('/api/items/1')
+      .put(`/api/items/${item.id}`)
       .send({});
     expect(res.status).toBe(400);
   });
@@ -35,4 +34,3 @@ describe('PUT /api/items/:id', () => {
       .send({ name: 'X' });
     expect(res.status).toBe(400);
   });
-});

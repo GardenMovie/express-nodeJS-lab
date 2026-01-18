@@ -1,13 +1,12 @@
 import request from 'supertest';
 import app from '../src/app';
-import { items } from '../src/models/item';
+import { clearItems, createItem } from '../src/models/item';
 
-describe('DELETE /api/items/:id', () => {
-  beforeEach(() => { items.length = 0; });
+  beforeEach(() => { clearItems(); });
 
   it('deletes item if it exists', async () => {
-    items.push({ id: 1, name: 'A' });
-    const res = await request(app).delete('/api/items/1');
+    const item = createItem('A');
+    const res = await request(app).delete(`/api/items/${item.id}`);
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('A');
   });
@@ -21,4 +20,3 @@ describe('DELETE /api/items/:id', () => {
     const res = await request(app).delete('/api/items/abc');
     expect(res.status).toBe(400);
   });
-});

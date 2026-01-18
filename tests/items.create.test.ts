@@ -1,9 +1,9 @@
 import request from 'supertest';
 import app from '../src/app';
-import { items } from '../src/models/item';
+import { clearItems } from '../src/models/item';
 
 describe('POST /api/items', () => {
-  beforeEach(() => { items.length = 0; });
+  beforeEach(() => { clearItems(); });
 
   it('creates an item with valid data', async () => {
     const res = await request(app)
