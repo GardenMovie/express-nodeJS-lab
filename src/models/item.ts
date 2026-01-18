@@ -6,8 +6,18 @@ export interface Item {
 }
 
 // Open or create the SQLite database
-const db = new Database('data/items.db');
+// Use in-memory DB for tests, file DB otherwise
+const isTest = process.env.NODE_ENV === 'test';
+const db = isTest ? new Database(':memory:') : new Database('data/items.db');
 
+// Clear all items (for test use only)
+export function clearItems() {
+    if (isTest) {
+        db.exec('DELETE FROM items');
+    } else {
+        throw new Error('clearItems can only be used in test environment');
+    }
+}
 // Ensure the table exists (for dev convenience)
 db.exec(`CREATE TABLE IF NOT EXISTS items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
