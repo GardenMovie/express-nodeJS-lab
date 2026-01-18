@@ -8,8 +8,10 @@ const app = express();
 app.use(express.json());
 
 // Health check endpoint
+import { HTTP_STATUS } from './constants/httpStatus';
+
 app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+    res.status(HTTP_STATUS.OK).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 // Routes
 app.use('/api/items', itemRoutes);

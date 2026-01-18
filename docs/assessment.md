@@ -1,7 +1,8 @@
 # Backend Project Analysis - Junior Developer Assessment
 
-**Date:** January 17, 2026  
-**Overall Rating:** 9/10 (Strong Junior Backend Foundation, CRUD and automated tests fully working)
+
+**Date:** January 18, 2026  
+**Overall Rating:** 9.5/10 (Excellent Junior Backend Foundation, robust CRUD, and automated integration tests with in-memory DB)
 
 ---
 
@@ -33,12 +34,16 @@
 - Custom middleware for request validation and resource existence
 - Centralized error handler with environment-aware stack traces
 
-### 4. Persistent Storage
-- SQLite database integration for item storage (no longer in-memory)
+
+### 4. Persistent Storage & Testing
+- SQLite database integration for item storage (file-based for dev, in-memory for tests)
 - Migration script and model abstraction for CRUD
+- In-memory database setup for all integration and unit tests (fast, isolated, production-like)
+
 
 ### 5. Testing & Tooling
-- Automated tests for all CRUD endpoints and health check (Jest + Supertest)
+- Automated integration tests for all CRUD endpoints and health check (Jest + Supertest)
+- In-memory DB reset before each test for isolation
 - Scripts for build, dev, lint, and test
 - Prettier and ESLint configuration for code quality
 - README and .env.example provided
@@ -62,11 +67,13 @@
 - No Dockerfile or containerization
 - No CI/CD pipeline or deployment scripts
 
+
 ### 5. Minor Code Issues
 - Status codes are hardcoded (not using constants)
 - No UUIDs for IDs (uses SQLite autoincrement integer)
 - Some package.json fields (description, author) now set, but could be expanded
 - No scripts for lint:fix or clean
+- Test setup could be further improved with test factories or fixtures for more complex scenarios
 
 ---
 
@@ -76,7 +83,7 @@
 - [ ] Add security middleware (helmet, cors, express-rate-limit)
 - [ ] Add logging (Winston, Morgan)
 - [ ] Add API documentation (Swagger/OpenAPI)
-- [ ] Expand automated testing (edge cases, error handling, integration/unit split)
+- [x] Expand automated testing (integration tests use in-memory DB, improved isolation)
 - [ ] Use UUIDs for IDs or DB-generated IDs
 - [ ] Dockerize the application for easy deployment
 - [ ] Add CI/CD for production
@@ -88,18 +95,20 @@
 
 **Verdict:** STRONG PASS
 
+
 ### Positive Indicators
 - Excellent grasp of Node.js, Express, and TypeScript fundamentals
 - Clean, modular, and maintainable code
 - Robust validation, error handling, and middleware usage
 - Persistent storage with SQLite and migration script
-- Automated tests and clear documentation
+- Automated integration tests with in-memory DB and clear documentation
+
 
 ### Areas for Growth
 - Security and production hardening
 - Logging and monitoring
 - DevOps (Docker, CI/CD)
-- API documentation and advanced testing
+- API documentation and advanced testing (edge cases, error handling, test factories)
 
 ### Interview Questions
 1. How would you secure this API for production?
@@ -125,12 +134,13 @@
 ## 🔍 Summary Checklist
 
 - [x] SQLite database integration
-- [x] Automated CRUD and health check tests
+- [x] Automated CRUD and health check tests (integration, in-memory DB)
 - [x] TypeScript strict mode and linting
 - [x] Centralized error handling
 - [x] Modular MVC structure
+- [x] Integration tests use in-memory DB for isolation
 - [ ] Security middleware
 - [ ] Logging system
 - [ ] API documentation
 - [ ] Docker & CI/CD
- [ ] Add security middleware (helmet, cors, express-rate-limit)
+- [ ] Add security middleware (helmet, cors, express-rate-limit)

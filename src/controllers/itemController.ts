@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { getAllItems, getItemById as dbGetItemById, createItem as dbCreateItem, updateItem as dbUpdateItem, deleteItem as dbDeleteItem } from '../models/item';
+import { HTTP_STATUS } from '../constants/httpStatus';
 
 // Get all items
 export const getAllItemsController = (req: Request, res: Response, next: NextFunction) => {
@@ -27,7 +28,7 @@ export const createItemController = (req: Request, res: Response, next: NextFunc
     try {
         const { name } = req.body;
         const item = dbCreateItem(name.trim());
-        res.status(201).json(item);
+        res.status(HTTP_STATUS.CREATED).json(item);
     } catch (error) {
         next(error);
     }
