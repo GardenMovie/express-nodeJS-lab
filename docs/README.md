@@ -1,6 +1,6 @@
 # express-metrics-lab
 
-A simple Node.js, Express, and TypeScript backend for managing items, with SQLite for persistent storage and automated testing. This project demonstrates clean architecture, validation, error handling, and modern tooling for a junior backend developer assessment.
+A minimal Node.js, Express, and TypeScript backend for experimenting with CRUD, validation, and testing using SQLite. This project was built purely for learning and practice as a foundation for more advanced backend work.
 
 ## Features
 - RESTful CRUD API for items
