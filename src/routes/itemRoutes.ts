@@ -1,25 +1,24 @@
 import { Router } from 'express';
+import { body, param } from 'express-validator';
 
 import {
-  createItem,
-  getItems,
-  getItemById,
-  updateItem,
-  deleteItem,
+  createItemController,
+  getAllItemsController,
+  getItemByIdController,
+  updateItemController,
+  deleteItemController,
 } from '../controllers/itemController';
-import { body, param } from 'express-validator';
 import { validateRequest } from '../middlewares/validateRequest';
 import { itemExists } from '../middlewares/itemExists';
 
 const router = Router();
 
-
-router.get('/', getItems);
+router.get('/', getAllItemsController);
 router.post(
   '/',
   body('name').isString().notEmpty().withMessage('Name is required and must be a non-empty string'),
   validateRequest,
-  createItem
+  createItemController
 );
 
 router.get(
@@ -27,7 +26,7 @@ router.get(
   param('id').isInt({ min: 0 }).withMessage('ID must be a positive integer'),
   validateRequest,
   itemExists,
-  getItemById
+  getItemByIdController
 );
 
 router.put(
@@ -36,7 +35,7 @@ router.put(
   body('name').isString().notEmpty().withMessage('Name is required and must be a non-empty string'),
   validateRequest,
   itemExists,
-  updateItem
+  updateItemController
 );
 
 router.delete(
@@ -44,7 +43,7 @@ router.delete(
   param('id').isInt({ min: 0 }).withMessage('ID must be a positive integer'),
   validateRequest,
   itemExists,
-  deleteItem
+  deleteItemController
 );
 
 export default router;

@@ -1,58 +1,56 @@
 import { Request, Response, NextFunction } from 'express';
-import { items, Item, getNextItemId } from '../models/item';
+import { getAllItems, getItemById as dbGetItemById, createItem as dbCreateItem, updateItem as dbUpdateItem, deleteItem as dbDeleteItem } from '../models/item';
 
-// Create an item
-export const createItem = (req: Request, res: Response, next: NextFunction) => {
+// Get all items
+export const getAllItemsController = (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { name } = req.body;
-        const newItem: Item = { id: getNextItemId(), name: name.trim() };
-        items.push(newItem);
-        res.status(201).json(newItem);
-    } catch (error) {
-        next(error);
-    }
-};
-
-// Read all items
-export const getItems = (req: Request, res: Response, next: NextFunction) => {
-    try {
+        const items = getAllItems();
         res.json(items);
     } catch (error) {
         next(error);
     }
 };
 
-// Read single item
-export const getItemById = (req: Request, res: Response, next: NextFunction) => {
+// Get item by ID
+export const getItemByIdController = (req: Request, res: Response, next: NextFunction) => {
     try {
         const id = Number(req.params.id);
-        const item = items.find((i) => i.id === id);
+        const item = dbGetItemById(id);
         res.json(item);
     } catch (error) {
         next(error);
     }
 };
 
+// Create an item
+export const createItemController = (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { name } = req.body;
+        const item = dbCreateItem(name.trim());
+        res.status(201).json(item);
+    } catch (error) {
+        next(error);
+    }
+};
+
 // Update an item
-export const updateItem = (req: Request, res: Response, next: NextFunction) => {
+export const updateItemController = (req: Request, res: Response, next: NextFunction) => {
     try {
         const id = Number(req.params.id);
         const { name } = req.body;
-        const itemIndex = items.findIndex((i) => i.id === id);
-        items[itemIndex].name = name.trim();
-        res.json(items[itemIndex]);
+        const updated = dbUpdateItem(id, name.trim());
+        res.json(updated);
     } catch (error) {
         next(error);
     }
 };
 
 // Delete an item
-export const deleteItem = (req: Request, res: Response, next: NextFunction) => {
+export const deleteItemController = (req: Request, res: Response, next: NextFunction) => {
     try {
         const id = Number(req.params.id);
-        const itemIndex = items.findIndex((i) => i.id === id);
-        const deletedItem = items.splice(itemIndex, 1)[0];
-        res.json(deletedItem);
+        const deleted = dbDeleteItem(id);
+        res.json(deleted);
     } catch (error) {
         next(error);
     }

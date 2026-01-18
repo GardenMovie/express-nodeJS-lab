@@ -1,9 +1,9 @@
 {
   "name": "server-metrics-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "A TypeScript/Express backend API for managing items, demonstrating CRUD, validation, error handling, and SQLite integration.",
   "license": "ISC",
-  "author": "",
+  "author": "Dody Gallerani",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
@@ -15,11 +15,13 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "better-sqlite3": "^12.6.2",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-validator": "^7.3.1"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/supertest": "^6.0.3",
