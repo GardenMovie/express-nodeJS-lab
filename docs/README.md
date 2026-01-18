@@ -1,4 +1,4 @@
-# Server Metrics Backend
+# express-metrics-lab
 
 A simple Node.js, Express, and TypeScript backend for managing items, with SQLite for persistent storage and automated testing. This project demonstrates clean architecture, validation, error handling, and modern tooling for a junior backend developer assessment.
 
@@ -107,4 +107,4 @@ npm run lint:fix  # Auto-fix and remove unused imports
 
 ---
 
-© 2026 Server Metrics Backend
+© 2026 express-metrics-lab

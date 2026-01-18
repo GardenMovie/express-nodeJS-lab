@@ -1,14 +1,14 @@
 
-# Project Assessment: Server Metrics Backend
+# Project Assessment: express-metrics-lab
 
 **Date:** January 18, 2026  
-**Project:** Server Metrics Backend (Node.js, Express, TypeScript, SQLite)
+**Project:** express-metrics-lab (Node.js, Express, TypeScript, SQLite)
 
 ---
 
 ## Overview
 
-This assessment reviews the Server Metrics Backend project, focusing on code quality, architecture, testing, and production readiness. The project demonstrates strong fundamentals in backend development, with clear strengths and some areas for further improvement.
+This assessment reviews the express-metrics-lab project, focusing on code quality, architecture, testing, and production readiness. The project demonstrates strong fundamentals in backend development, with clear strengths and some areas for further improvement.
 
 ---
 
