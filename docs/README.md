@@ -2,6 +2,8 @@
 
 A minimal Node.js, Express, and TypeScript backend for experimenting with CRUD, validation, and testing using SQLite. This project was built purely for learning and practice as a foundation for more advanced backend work.
 
+![Image of postman showcasing the system working](projectPrint.png)
+
 ## Features
 - RESTful CRUD API for items
 - SQLite database (file-based for development, in-memory for tests)
