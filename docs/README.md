@@ -1,4 +1,4 @@
-# express-metrics-lab
+# express-nodeJS-lab
 
 A minimal Node.js, Express, and TypeScript backend for experimenting with CRUD, validation, and testing using SQLite. This project was built purely for learning and practice as a foundation for more advanced backend work.
 
@@ -104,7 +104,3 @@ npm run lint:fix  # Auto-fix and remove unused imports
 ├── package.json
 └── tsconfig.json
 ```
-
----
-
-© 2026 express-metrics-lab
